@@ -8,10 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class search extends Fragment {
+public class Search extends Fragment {
 
 
-    public search() {
+    public Search() {
         // Required empty public constructor
     }
 
