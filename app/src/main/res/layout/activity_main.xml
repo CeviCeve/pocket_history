@@ -24,8 +24,8 @@
 
 
             <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fragmentContainerView2"
-                android:name="by.ph.Search"
+                android:id="@+id/frag"
+                android:name="by.ph.Settings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>

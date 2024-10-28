@@ -12,8 +12,8 @@ public class BuildingData {
     private String city;
     private Integer id;
 
-    public BuildingData getAll(){
+    /*public BuildingData getAll(){
         return new BuildingData(getName(), getCity(), getId());
-    }
+    }*/
 
 }

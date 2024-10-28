@@ -17,9 +17,11 @@
             android:layout_height="285dp"
             android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/not_place" />
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/nesvizh" />
 
         <EditText
             android:id="@+id/search_bar"
@@ -28,6 +30,7 @@
             android:layout_marginTop="26dp"
             android:background="@drawable/rectangle"
             android:hint="Достопримечательность"
+            android:text="Несвижский замок"
             android:inputType="text"
             android:textColor="@color/black"
             android:paddingLeft="40dp"
@@ -201,6 +204,7 @@
             android:layout_height="20dp"
             android:layout_marginTop="10dp"
             android:elevation="10dp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -11,6 +11,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentContainer;
+import androidx.fragment.app.FragmentContainerView;
+import androidx.fragment.app.FragmentTransaction;
 
 import by.ph.databinding.ActivityMainBinding;
 
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView search_button;
     private ImageView settings_button;
     private ImageView save_button;
+    private FragmentContainerView fragment;
 
 
     @Override
@@ -56,16 +60,26 @@ public class MainActivity extends AppCompatActivity {
             makePreviousUnactive();
             settings_button.setBackgroundResource(R.drawable.settings_active);
             previous = settings_button;
+            openSettingsMenu();
         });
 
         //openSearchMenu();
     }
 
     private void openSearchMenu() {
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.search_fragment, new Search()) // or replace с теми же параметрами
-                .addToBackStack(null) // если необходимо, чтоб по нажатию "назад" вы могли вернуться на предыдущий фрагмент. Вместо null можно задать свой ключ.
-                .commit();
+        Fragment exampleFragment = new Search();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frag, exampleFragment);
+        transaction.addToBackStack(null); // Позволяет вернуться к предыдущему фрагменту по нажатию кнопки "назад"
+        transaction.commit();
+    }
+
+    private void openSettingsMenu() {
+            Fragment exampleFragment = new Settings();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frag, exampleFragment);
+            transaction.addToBackStack(null); // Позволяет вернуться к предыдущему фрагменту по нажатию кнопки "назад"
+            transaction.commit();
     }
 
     private void makePreviousUnactive() {
@@ -78,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
         search_button = findViewById(R.id.search_menu_button);
         save_button = findViewById(R.id.save_menu_button);
         settings_button = findViewById(R.id.settings_menu_button);
+
+        fragment = findViewById(R.id.frag);
 
         previous = search_button;
     }
