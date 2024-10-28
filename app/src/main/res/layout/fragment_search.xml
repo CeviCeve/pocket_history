@@ -29,6 +29,7 @@
             android:background="@drawable/rectangle"
             android:hint="Достопримечательность"
             android:inputType="text"
+            android:textColor="@color/black"
             android:paddingLeft="40dp"
             android:paddingRight="40dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +46,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/search_bar"
             app:layout_constraintTop_toTopOf="@+id/search_bar"
-            tools:srcCompat="@drawable/search" />
+            android:background="@drawable/search" />
 
         <ImageView
             android:id="@+id/cross"

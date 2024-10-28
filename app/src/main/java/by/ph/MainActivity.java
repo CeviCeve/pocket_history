@@ -19,6 +19,10 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
 
     private ImageView previous;
+    private ImageView search_button;
+    private ImageView settings_button;
+    private ImageView save_button;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,32 +35,27 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         init();
 
-        binding.searchMenuButton.setOnClickListener(v -> {
-                makePreviousUnactive();
-                binding.searchMenuButton.setBackgroundResource(R.drawable.search_active);
-                previous = binding.searchMenuButton;
-                //openSearchMenu();
-            Toast.makeText(this,"text",Toast.LENGTH_SHORT).show();
+        search_button.setOnClickListener(v -> {
+            makePreviousUnactive();
+            search_button.setBackgroundResource(R.drawable.search_active);
+            previous = search_button;
+            openSearchMenu();
+            //Toast.makeText(this,"text",Toast.LENGTH_SHORT).show();
         });
 
-        binding.saveMenuButton.setOnClickListener(v -> {
+        save_button.setOnClickListener(v -> {
             makePreviousUnactive();
-            binding.saveMenuButton.setBackgroundResource(R.drawable.save_active);
-            previous = binding.saveMenuButton;
+            save_button.setBackgroundResource(R.drawable.save_active);
+            previous = save_button;
         });
 
-        binding.arMenuButton.setOnClickListener(v -> {
+        settings_button.setOnClickListener(v -> {
             makePreviousUnactive();
-            binding.arMenuButton.setBackgroundResource(R.drawable.ar_active);
-            previous = binding.arMenuButton;
-        });
-
-        binding.settingsMenuButton.setOnClickListener(v -> {
-            makePreviousUnactive();
-            binding.settingsMenuButton.setBackgroundResource(R.drawable.settings_active);
-            previous = binding.settingsMenuButton;
+            settings_button.setBackgroundResource(R.drawable.settings_active);
+            previous = settings_button;
         });
 
         //openSearchMenu();
@@ -70,14 +69,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void makePreviousUnactive() {
-        if(previous == binding.searchMenuButton) binding.searchMenuButton.setBackgroundResource(R.drawable.search_unactive);
-        else if(previous == binding.settingsMenuButton) binding.settingsMenuButton.setBackgroundResource(R.drawable.settings_unactive);
-        else if(previous == binding.arMenuButton) binding.arMenuButton.setBackgroundResource(R.drawable.ar_unactive);
-        else binding.saveMenuButton.setBackgroundResource(R.drawable.save_unactive);
+        if(previous == search_button) search_button.setBackgroundResource(R.drawable.search_unactive);
+        else if(previous == settings_button) settings_button.setBackgroundResource(R.drawable.settings_unactive);
+        else save_button.setBackgroundResource(R.drawable.save_unactive);
     }
 
     private void init() {
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        previous = binding.searchMenuButton;
+        search_button = findViewById(R.id.search_menu_button);
+        save_button = findViewById(R.id.save_menu_button);
+        settings_button = findViewById(R.id.settings_menu_button);
+
+        previous = search_button;
     }
 }
