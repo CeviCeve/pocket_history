@@ -5,6 +5,7 @@ import android.os.Binder;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.renderscript.ScriptGroup;
 import android.view.LayoutInflater;
@@ -55,6 +56,14 @@ public class Search extends Fragment {
         binding.place.setImageDrawable(getResources().getDrawable(R.drawable.nesvizh));
 
         return binding.getRoot();
+    }
+
+    private void openAR() {
+        Fragment exampleFragment = new AR();
+        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        transaction.replace(R.id.frag, exampleFragment);
+        transaction.addToBackStack(null); // Позволяет вернуться к предыдущему фрагменту по нажатию кнопки "назад"
+        transaction.commit();
     }
 
     /*

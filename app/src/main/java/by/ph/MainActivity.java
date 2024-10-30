@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             makePreviousUnactive();
             save_button.setBackgroundResource(R.drawable.save_active);
             previous = save_button;
+            openFavoriteMenu();
         });
 
         settings_button.setOnClickListener(v -> {
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         Fragment exampleFragment = new Search();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frag, exampleFragment);
-        transaction.addToBackStack(null); // Позволяет вернуться к предыдущему фрагменту по нажатию кнопки "назад"
+        //transaction.addToBackStack(null); // Позволяет вернуться к предыдущему фрагменту по нажатию кнопки "назад"
         transaction.commit();
     }
 
@@ -78,8 +79,16 @@ public class MainActivity extends AppCompatActivity {
             Fragment exampleFragment = new Settings();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.frag, exampleFragment);
-            transaction.addToBackStack(null); // Позволяет вернуться к предыдущему фрагменту по нажатию кнопки "назад"
+            //transaction.addToBackStack(null); // Позволяет вернуться к предыдущему фрагменту по нажатию кнопки "назад"
             transaction.commit();
+    }
+
+    private void openFavoriteMenu() {
+        Fragment exampleFragment = new FavoriteFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frag, exampleFragment);
+        //transaction.addToBackStack(null); // Позволяет вернуться к предыдущему фрагменту по нажатию кнопки "назад"
+        transaction.commit();
     }
 
     private void makePreviousUnactive() {
