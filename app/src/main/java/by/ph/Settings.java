@@ -34,28 +34,5 @@ public class Settings extends Fragment {
         return binding.getRoot();
     }
 
-    /*
-
-    @Override
-    public int getItemCount() {
-        return Assortment.assortment.size();
-    }
-
-    static class GroupViewHolder extends RecyclerView.ViewHolder {
-        TextView text;
-        public GroupViewHolder(@NonNull View itemView) {
-            super(itemView);
-            text = itemView.findViewById(R.id.text);
-        }
-    }
-
-    static class ChildViewHolder extends RecyclerView.ViewHolder {
-        TextView text;
-        public ChildViewHolder(@NonNull View itemView) {
-            super(itemView);
-            text = itemView.findViewById(R.id.text);
-        }
-    }
-     */
 
 }

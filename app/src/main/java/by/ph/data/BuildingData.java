@@ -1,9 +1,5 @@
 package by.ph.data;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
 public class BuildingData {
     private String name;
     private String city;
