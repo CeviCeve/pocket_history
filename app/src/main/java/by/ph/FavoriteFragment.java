@@ -2,6 +2,7 @@ package by.ph;
 
 import static by.ph.data.ArrayData.buildings;
 import static by.ph.data.ArrayData.favorites;
+import static by.ph.worker.Finder.findBuildingByName;
 
 import android.os.Bundle;
 
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -40,8 +42,8 @@ public class FavoriteFragment extends Fragment {
 
         binding.favoriteListView.setAdapter(new FavoriteAdapter(getContext(), favorites, new OnRecyclerViewItemClickListener() {
             @Override
-            public void onClick() {
-                Search secondFragment = new Search();
+            public void onClick(BuildingData data) {
+                Search secondFragment = new Search(buildings.get(findBuildingByName(data.getName())));
                 FragmentTransaction transaction = requireFragmentManager().beginTransaction();
                 transaction.replace(R.id.frag, secondFragment);
                 transaction.addToBackStack(null);

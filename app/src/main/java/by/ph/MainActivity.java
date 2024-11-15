@@ -2,7 +2,10 @@ package by.ph;
 
 import static by.ph.data.ArrayData.buildings;
 import static by.ph.data.ArrayData.favorites;
+import static by.ph.data.ArrayData.lastBuilding;
+import static by.ph.data.ArrayData.userData;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -43,7 +46,9 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        favorites.add(new BuildingData("1","",1));
+
+        createBuildingData();
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         init();
 
@@ -51,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             makePreviousUnactive();
             search_button.setBackgroundResource(R.drawable.search_active);
             previous = search_button;
-            openFragment(new Search());
+            openFragment(new Search(lastBuilding));
         });
 
         save_button.setOnClickListener(v -> {
@@ -65,7 +70,9 @@ public class MainActivity extends AppCompatActivity {
             makePreviousUnactive();
             settings_button.setBackgroundResource(R.drawable.settings_active);
             previous = settings_button;
-            openFragment(new Settings());
+
+            if(userData == null) openFragment(new RegFragment());
+            else openFragment(new Settings());
         });
     }
 
@@ -90,6 +97,18 @@ public class MainActivity extends AppCompatActivity {
         fragment = findViewById(R.id.frag);
 
         previous = search_button;
+    }
+
+    private void createBuildingData() {
+        Drawable drawable = getDrawable(R.drawable.nesvizh);
+        buildings.add(new BuildingData("Несвижский замок","г.Несвиж",0, getDrawable(R.drawable.nesvizh), "интересная инфа", new double[]{1,2,3,4}));
+        buildings.add(new BuildingData("Несвижски замок","г.Несвиж",0, getDrawable(R.drawable.nesvizh), "интересная инфа", new double[]{1,2,3,4}));
+        buildings.add(new BuildingData("Несвижск замок","г.Несвиж",0, getDrawable(R.drawable.nesvizh), "интересная инфа", new double[]{1,2,3,4}));
+        buildings.add(new BuildingData("Несвижс замок","г.Несвиж",0, getDrawable(R.drawable.nesvizh), "интересная инфа", new double[]{1,2,3,4}));
+
+        favorites.add(buildings.get(1));
+        favorites.add(buildings.get(0));
+        favorites.add(buildings.get(3));
     }
 
 }

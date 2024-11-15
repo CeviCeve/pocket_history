@@ -5,14 +5,20 @@ import static androidx.core.content.ContextCompat.getSystemService;
 
 import static by.ph.data.ArrayData.buildings;
 import static by.ph.data.ArrayData.favorites;
+import static by.ph.data.ArrayData.lastBuilding;
 import static by.ph.worker.Finder.findBuildingByName;
 import static by.ph.worker.Finder.findFavoriteByName;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Binder;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -41,8 +47,7 @@ public class Search extends Fragment {
     private Drawable place;
     private Context context;
 
-    public Search() {}
-
+    public Search(){}
     public Search(BuildingData data) {
         name = data.getName();
         city = data.getCity();
@@ -62,12 +67,13 @@ public class Search extends Fragment {
         binding = FragmentSearchBinding.inflate(getLayoutInflater());
         context = getContext();
 
-//        if(findFavoriteByName(name) != -1) {
-//            binding.save.setBackgroundResource(R.drawable.saved);
-//        }
+        if(name == null) name = "Проблема с целостностью данных";
+        if(findFavoriteByName(name) != -1) {
+            binding.save.setBackgroundResource(R.drawable.saved);
+        }
 
         binding.way.setOnClickListener(v -> {
-            Toast.makeText(this.getContext(),"Ведутся технические работы",Toast.LENGTH_SHORT).show();
+            openMaps(lastBuilding.getChords());
         });
         binding.save.setOnClickListener(v -> {
             if(findFavoriteByName(name) != -1) {
@@ -82,7 +88,7 @@ public class Search extends Fragment {
             }
         });
         binding.message.setOnClickListener(v -> {
-            Toast.makeText(this.getContext(),"Ведутся технические работы",Toast.LENGTH_SHORT).show();
+            copyLink();
         });
         binding.games.setOnClickListener(v -> {
 
@@ -104,12 +110,11 @@ public class Search extends Fragment {
 
                     //скрыть клавиатуру
                     InputMethodManager iMM = (InputMethodManager)getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    iMM.hideSoftInputFromWindow(binding.searchBar.getWindowToken(), 0 );
+                    iMM.hideSoftInputFromWindow(binding.searchBar.getWindowToken(), 0);
 
                     // Здесь можно выполнять нужные действия с текстом
-                    //Toast.makeText(getContext(), "Вы ввели: " + text, Toast.LENGTH_SHORT).show();
-                    //if(findBuildingByName(text)) {}
-                    //else {}
+                    if(findBuildingByName(text) !=-1) { openSearch(findBuildingByName(text)); }
+                    else {Toast.makeText(getContext(), "Ничего не найдено", Toast.LENGTH_SHORT).show();}
 
                     return true;
                 }
@@ -121,12 +126,34 @@ public class Search extends Fragment {
 
     }
 
-    private void openAR() {
-        Fragment exampleFragment = new AR();
-        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-        transaction.replace(R.id.frag, exampleFragment);
-        transaction.addToBackStack(null); // Позволяет вернуться к предыдущему фрагменту по нажатию кнопки "назад"
+    private void openSearch(int i) {
+        lastBuilding = buildings.get(i);
+        Search secondFragment = new Search(lastBuilding);
+        FragmentTransaction transaction = requireFragmentManager().beginTransaction();
+        transaction.replace(R.id.frag, secondFragment);
+        transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    private void openMaps(double[] i){
+        String link = "http://maps.google.com/maps?saddr="+String.valueOf(i[0])+","+String.valueOf(i[1])
+                +"&daddr="+String.valueOf(i[2])+","+String.valueOf(i[3]);
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                Uri.parse(link));
+        startActivity(intent);
+    }
+
+    private void copyLink(){
+
+        double[] i = lastBuilding.getChords();
+        String link = "http://maps.google.com/maps?saddr="+String.valueOf(i[0])+","+String.valueOf(i[1])
+                +"&daddr="+String.valueOf(i[2])+","+String.valueOf(i[3]);
+
+        ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("", link);
+        clipboard.setPrimaryClip(clip);
+
+        Toast.makeText(getContext(), "Ссылка скопирована", Toast.LENGTH_SHORT).show();
     }
 
 

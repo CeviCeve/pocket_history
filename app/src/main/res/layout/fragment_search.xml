@@ -30,7 +30,6 @@
             android:layout_marginTop="26dp"
             android:background="@drawable/rectangle"
             android:hint="Достопримечательность"
-            android:text="Несвижский замок"
             android:inputType="text"
             android:textColor="@color/black"
             android:paddingLeft="40dp"
@@ -152,7 +151,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/way"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/save" />
+            android:background="@drawable/save" />
 
         <ImageView
             android:id="@+id/way"

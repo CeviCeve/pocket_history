@@ -12,7 +12,7 @@ public class BuildingData {
     private Integer id;
     private Drawable place;
     private String funData;
-    public double chords[] = new double[2];
+    public double[] chords = new double[4];
 
 
     public double[] getChords() {
@@ -43,8 +43,15 @@ public class BuildingData {
         this.name = name;
         this.city = city;
         this.id = id;
+    }
+
+    public BuildingData(String name, String city, Integer id, Drawable place, String funData, double[] chords) {
+        this.name = name;
+        this.city = city;
+        this.id = id;
         this.place = place;
         this.funData = funData;
+        this.chords = chords;
     }
 
    /* public BuildingData getAll(){

@@ -57,10 +57,10 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
                 previous.imageView.setVisibility(View.INVISIBLE);
             }
             if(holder == previous) {
-                Toast.makeText(context, "text", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "text", Toast.LENGTH_SHORT).show();
 
                 if (mClickListener != null) {
-                    mClickListener.onClick();
+                    mClickListener.onClick(buildingData);
                 }
                 //new MainActivity().openFragment(new Search(favorites.get(findFavoriteByName(buildingData.getName()))));
             }

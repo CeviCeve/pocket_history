@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".StartFragment"
+    android:id="@+id/StartFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/place"
+            android:layout_width="342dp"
+            android:layout_height="345dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/big_red_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_bar"
+            app:srcCompat="@drawable/non_connect" />
+
+        <EditText
+            android:id="@+id/search_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="26dp"
+            android:background="@drawable/rectangle"
+            android:hint="Достопримечательность"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/search_bar"
+            app:layout_constraintEnd_toEndOf="@+id/search_bar"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/search_bar"
+            app:layout_constraintTop_toTopOf="@+id/search_bar"
+            android:background="@drawable/search" />
+
+        <ImageView
+            android:id="@+id/cross"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintBottom_toBottomOf="@+id/search_bar"
+            app:layout_constraintEnd_toEndOf="@+id/search_bar"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/search_bar"
+            app:layout_constraintTop_toTopOf="@+id/search_bar"
+            app:srcCompat="@drawable/vector" />
+
+
+        <ImageView
+            android:id="@+id/random_button"
+            android:layout_width="375dp"
+            android:layout_height="54dp"
+            android:src="@drawable/angle_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/place"
+            app:layout_constraintVertical_bias="0.2"/>
+
+        <TextView
+            android:id="@+id/textView17"
+            android:fontFamily="@font/manrope"
+            android:textSize="17sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Найти случайное место"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/random_button"
+            app:layout_constraintEnd_toEndOf="@+id/random_button"
+            app:layout_constraintStart_toStartOf="@+id/random_button"
+            app:layout_constraintTop_toTopOf="@+id/random_button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
+
