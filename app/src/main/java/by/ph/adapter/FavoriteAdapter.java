@@ -1,20 +1,29 @@
 package by.ph.adapter;
 
+import static by.ph.data.ArrayData.favorites;
+import static by.ph.worker.Finder.findFavoriteByName;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import by.ph.MainActivity;
 import by.ph.R;
+import by.ph.Search;
 import by.ph.data.BuildingData;
+import by.ph.interfaces.OnRecyclerViewItemClickListener;
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.FavoriteHandler> {
 
@@ -22,10 +31,12 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
     List<BuildingData> data;
     Context context;
 
+    private OnRecyclerViewItemClickListener mClickListener;
 
-    public FavoriteAdapter(@NonNull Context context, List<BuildingData> data){
+    public FavoriteAdapter(@NonNull Context context, List<BuildingData> data, OnRecyclerViewItemClickListener clickListener){
         this.data = data;
         this.context = context;
+        mClickListener = clickListener;
     }
 
     @NonNull
@@ -45,6 +56,14 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
                 previous.constraintLayout.setBackgroundTintList(context.getResources().getColorStateList(R.color.background_dark));
                 previous.imageView.setVisibility(View.INVISIBLE);
             }
+            if(holder == previous) {
+                Toast.makeText(context, "text", Toast.LENGTH_SHORT).show();
+
+                if (mClickListener != null) {
+                    mClickListener.onClick();
+                }
+                //new MainActivity().openFragment(new Search(favorites.get(findFavoriteByName(buildingData.getName()))));
+            }
             holder.constraintLayout.setBackgroundTintList(context.getResources().getColorStateList(R.color.white));
             holder.imageView.setVisibility(View.VISIBLE);
 
@@ -62,6 +81,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
         TextView text;
         ImageView imageView;
         ConstraintLayout constraintLayout;
+
 
         public FavoriteHandler(@NonNull View itemView) {
             super(itemView);

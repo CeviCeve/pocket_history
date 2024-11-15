@@ -1,5 +1,8 @@
 package by.ph;
 
+import static by.ph.data.ArrayData.buildings;
+import static by.ph.data.ArrayData.favorites;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,7 +18,9 @@ import androidx.fragment.app.FragmentContainer;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentTransaction;
 
+import by.ph.data.BuildingData;
 import by.ph.databinding.ActivityMainBinding;
+import by.ph.interfaces.OnRecyclerViewItemClickListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        favorites.add(new BuildingData("1","",1));
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         init();
 
@@ -46,47 +51,27 @@ public class MainActivity extends AppCompatActivity {
             makePreviousUnactive();
             search_button.setBackgroundResource(R.drawable.search_active);
             previous = search_button;
-            openSearchMenu();
-            //Toast.makeText(this,"text",Toast.LENGTH_SHORT).show();
+            openFragment(new Search());
         });
 
         save_button.setOnClickListener(v -> {
             makePreviousUnactive();
             save_button.setBackgroundResource(R.drawable.save_active);
             previous = save_button;
-            openFavoriteMenu();
+            openFragment(new FavoriteFragment());
         });
 
         settings_button.setOnClickListener(v -> {
             makePreviousUnactive();
             settings_button.setBackgroundResource(R.drawable.settings_active);
             previous = settings_button;
-            openSettingsMenu();
+            openFragment(new Settings());
         });
-
-        //openSearchMenu();
     }
 
-    private void openSearchMenu() {
-        Fragment exampleFragment = new Search();
+    public void openFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frag, exampleFragment);
-        //transaction.addToBackStack(null); // Позволяет вернуться к предыдущему фрагменту по нажатию кнопки "назад"
-        transaction.commit();
-    }
-
-    private void openSettingsMenu() {
-            Fragment exampleFragment = new Settings();
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frag, exampleFragment);
-            //transaction.addToBackStack(null); // Позволяет вернуться к предыдущему фрагменту по нажатию кнопки "назад"
-            transaction.commit();
-    }
-
-    private void openFavoriteMenu() {
-        Fragment exampleFragment = new FavoriteFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frag, exampleFragment);
+        transaction.replace(R.id.frag, fragment);
         //transaction.addToBackStack(null); // Позволяет вернуться к предыдущему фрагменту по нажатию кнопки "назад"
         transaction.commit();
     }
@@ -106,4 +91,5 @@ public class MainActivity extends AppCompatActivity {
 
         previous = search_button;
     }
+
 }

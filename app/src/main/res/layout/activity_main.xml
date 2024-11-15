@@ -25,7 +25,7 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/frag"
-                android:name="by.ph.Settings"
+                android:name="by.ph.Search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -44,7 +44,7 @@
             android:id="@+id/search_menu_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/search_unactive"
+            android:background="@drawable/search_active"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/save_menu_button"
             app:layout_constraintHorizontal_bias="0.5"
