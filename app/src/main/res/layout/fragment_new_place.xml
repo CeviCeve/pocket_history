@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewPlaceFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+        <EditText
+            android:id="@+id/place"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/rectangle_border"
+            android:hint="Расоложение"
+            android:inputType="text"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name" />
+
+        <EditText
+            android:id="@+id/chord"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/rectangle_border"
+            android:hint="Координаты"
+            android:inputType="text"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/place" />
+
+        <EditText
+            android:id="@+id/facts"
+            android:layout_width="335dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/big_red_border"
+            android:hint="Интересные факты"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chord" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rectangle_border"
+            android:hint="Название"
+            android:inputType="text"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="74dp"
+            android:text="Новое место"
+            android:textColor="@color/black"
+            android:fontFamily="@font/manrope"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/click2"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="42dp"
+            android:src="@drawable/angle_button"
+            app:layout_constraintEnd_toEndOf="@+id/chord"
+            app:layout_constraintStart_toStartOf="@+id/chord"
+            app:layout_constraintTop_toBottomOf="@+id/facts" />
+
+        <ImageView
+            android:id="@+id/click3"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/angle_button"
+            app:layout_constraintEnd_toEndOf="@+id/chord"
+            app:layout_constraintStart_toStartOf="@+id/chord"
+            app:layout_constraintTop_toBottomOf="@+id/click2" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/manrope"
+            android:text="Прикрепить фотографии"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@+id/click2"
+            app:layout_constraintEnd_toEndOf="@+id/click2"
+            app:layout_constraintStart_toStartOf="@+id/click2"
+            app:layout_constraintTop_toTopOf="@+id/click2" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/manrope"
+            android:text="Отправить на модерацию"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@+id/click3"
+            app:layout_constraintEnd_toEndOf="@+id/click3"
+            app:layout_constraintStart_toStartOf="@+id/click3"
+            app:layout_constraintTop_toTopOf="@+id/click3" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

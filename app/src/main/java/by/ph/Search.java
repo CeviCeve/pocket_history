@@ -6,6 +6,7 @@ import static androidx.core.content.ContextCompat.getSystemService;
 import static by.ph.data.ArrayData.buildings;
 import static by.ph.data.ArrayData.favorites;
 import static by.ph.data.ArrayData.lastBuilding;
+import static by.ph.data.ArrayData.userData;
 import static by.ph.worker.Finder.findBuildingByName;
 import static by.ph.worker.Finder.findFavoriteByName;
 
@@ -80,18 +81,23 @@ public class Search extends Fragment {
                 favorites.remove(findFavoriteByName(name));
                 binding.save.setBackgroundResource(R.drawable.save);
                 Toast.makeText(this.getContext(),"Удалено из сохранненных",Toast.LENGTH_SHORT).show();
+                //userData.setQuizzes(userData.getQuizzes() - 1);
             }
             else {
                 favorites.add(buildings.get(findBuildingByName(name)));
                 binding.save.setBackgroundResource(R.drawable.saved);
                 Toast.makeText(this.getContext(),"Добавлено в сохранненные",Toast.LENGTH_SHORT).show();
+                //userData.setQuizzes(userData.getQuizzes() + 1);
             }
         });
         binding.message.setOnClickListener(v -> {
             copyLink();
         });
         binding.games.setOnClickListener(v -> {
-
+            Toast.makeText(getContext(),"В разработке",Toast.LENGTH_SHORT).show();
+        });
+        binding.comments.setOnClickListener(v->{
+                openFragment(new CommentsFragment());
         });
 
         binding.name.setText(name);
@@ -131,6 +137,13 @@ public class Search extends Fragment {
         Search secondFragment = new Search(lastBuilding);
         FragmentTransaction transaction = requireFragmentManager().beginTransaction();
         transaction.replace(R.id.frag, secondFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    private void openFragment(Fragment fragment) {
+        FragmentTransaction transaction = requireFragmentManager().beginTransaction();
+        transaction.replace(R.id.frag, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
     }

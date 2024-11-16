@@ -56,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
             makePreviousUnactive();
             search_button.setBackgroundResource(R.drawable.search_active);
             previous = search_button;
-            openFragment(new Search(lastBuilding));
+            if(lastBuilding == null)openFragment(new StartFragment());
+            else openFragment(new Search(lastBuilding));
         });
 
         save_button.setOnClickListener(v -> {
@@ -101,14 +102,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void createBuildingData() {
         Drawable drawable = getDrawable(R.drawable.nesvizh);
-        buildings.add(new BuildingData("Несвижский замок","г.Несвиж",0, getDrawable(R.drawable.nesvizh), "интересная инфа", new double[]{1,2,3,4}));
-        buildings.add(new BuildingData("Несвижски замок","г.Несвиж",0, getDrawable(R.drawable.nesvizh), "интересная инфа", new double[]{1,2,3,4}));
-        buildings.add(new BuildingData("Несвижск замок","г.Несвиж",0, getDrawable(R.drawable.nesvizh), "интересная инфа", new double[]{1,2,3,4}));
-        buildings.add(new BuildingData("Несвижс замок","г.Несвиж",0, getDrawable(R.drawable.nesvizh), "интересная инфа", new double[]{1,2,3,4}));
+        buildings.add(new BuildingData("Несвижский замок","г.Несвиж",0, getDrawable(R.drawable.nesvizh), "интересная информация", new double[]{53.906894,27.563843,53.22270604710993, 26.692461368346994}));
+        buildings.add(new BuildingData("Площадь победы","г.Минск",0, getDrawable(R.drawable.pl), "интересная информация", new double[]{53.906894,27.563843,53.908760045436935, 27.575098954631187}));
+        buildings.add(new BuildingData("Белая вежа","Беловежская пуща",0, getDrawable(R.drawable.vezsha), "интересная информация", new double[]{53.906894,27.563843,52.40485064444143, 23.819539081786854}));
 
-        favorites.add(buildings.get(1));
-        favorites.add(buildings.get(0));
-        favorites.add(buildings.get(3));
     }
 
 }
