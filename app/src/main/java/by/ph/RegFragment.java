@@ -36,13 +36,15 @@ public class RegFragment extends Fragment {
         binding = FragmentRegBinding.inflate(getLayoutInflater());
 
         binding.reg.setOnClickListener(v->{
-            Toast.makeText(getContext(),"Ошибка валидации", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(),"Ошибка валидации", Toast.LENGTH_SHORT).show();
             if(binding.name.getText().toString().isEmpty()
                     || binding.mail.getText().toString().isEmpty()
                     || binding.password.getText().toString().isEmpty()) {
                 Toast.makeText(getContext(),"Ошибка валидации", Toast.LENGTH_SHORT).show();
             } else {
-                userData = new UserData(binding.name.getText().toString(), binding.mail.getText().toString(), binding.password.getText().toString());
+                userData.setName(binding.name.getText().toString());
+                userData.setMail(binding.mail.getText().toString());
+                userData.setPassword(binding.password.getText().toString());
                 openSettings();
             }
         });

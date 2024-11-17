@@ -22,6 +22,7 @@ import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentTransaction;
 
 import by.ph.data.BuildingData;
+import by.ph.data.UserData;
 import by.ph.databinding.ActivityMainBinding;
 import by.ph.interfaces.OnRecyclerViewItemClickListener;
 
@@ -52,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         init();
 
+        userData = new UserData("non","text","text", 0, 0, 0);
+
         search_button.setOnClickListener(v -> {
             makePreviousUnactive();
             search_button.setBackgroundResource(R.drawable.search_active);
@@ -73,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
             previous = settings_button;
 
             if(userData == null) openFragment(new RegFragment());
+            else if(userData.getName().equals("non")) openFragment(new RegFragment());
             else openFragment(new Settings());
         });
     }
@@ -105,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
         buildings.add(new BuildingData("Несвижский замок","г.Несвиж",0, getDrawable(R.drawable.nesvizh), "интересная информация", new double[]{53.906894,27.563843,53.22270604710993, 26.692461368346994}));
         buildings.add(new BuildingData("Площадь победы","г.Минск",0, getDrawable(R.drawable.pl), "интересная информация", new double[]{53.906894,27.563843,53.908760045436935, 27.575098954631187}));
         buildings.add(new BuildingData("Белая вежа","Беловежская пуща",0, getDrawable(R.drawable.vezsha), "интересная информация", new double[]{53.906894,27.563843,52.40485064444143, 23.819539081786854}));
-
     }
 
 }

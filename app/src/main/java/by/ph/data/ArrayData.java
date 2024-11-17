@@ -10,4 +10,6 @@ public class ArrayData {
     public static BuildingData lastBuilding;
 
     public static UserData userData;
+
+    public static ArrayList<QuizData> quizData = new ArrayList<>();
 }

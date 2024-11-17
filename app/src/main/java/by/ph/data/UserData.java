@@ -2,6 +2,7 @@ package by.ph.data;
 
 import android.graphics.drawable.Drawable;
 
+
 public class UserData {
 
     private String name;
@@ -9,8 +10,8 @@ public class UserData {
     private String password;
 
     private Integer visited_places;
-    private Integer quizzes;
-    private Integer save_places;
+    private Integer quizzes = new Integer(0);
+    private Integer save_places = new Integer(0);
 
     private Drawable drawable;
 
@@ -65,7 +66,15 @@ public class UserData {
         this.quizzes = quizzes;
     }
 
-    public void setVisited_places(Integer visited_places) {
-        this.visited_places = visited_places;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

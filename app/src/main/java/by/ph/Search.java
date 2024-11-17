@@ -67,6 +67,7 @@ public class Search extends Fragment {
 
         binding = FragmentSearchBinding.inflate(getLayoutInflater());
         context = getContext();
+        lastBuilding = buildings.get(0);
 
         if(name == null) name = "Проблема с целостностью данных";
         if(findFavoriteByName(name) != -1) {
@@ -81,20 +82,25 @@ public class Search extends Fragment {
                 favorites.remove(findFavoriteByName(name));
                 binding.save.setBackgroundResource(R.drawable.save);
                 Toast.makeText(this.getContext(),"Удалено из сохранненных",Toast.LENGTH_SHORT).show();
-                //userData.setQuizzes(userData.getQuizzes() - 1);
+                userData.setQuizzes(userData.getQuizzes() - 1);
             }
             else {
                 favorites.add(buildings.get(findBuildingByName(name)));
                 binding.save.setBackgroundResource(R.drawable.saved);
                 Toast.makeText(this.getContext(),"Добавлено в сохранненные",Toast.LENGTH_SHORT).show();
-                //userData.setQuizzes(userData.getQuizzes() + 1);
+                userData.setQuizzes(userData.getQuizzes() + 1);
             }
         });
         binding.message.setOnClickListener(v -> {
             copyLink();
         });
         binding.games.setOnClickListener(v -> {
-            Toast.makeText(getContext(),"В разработке",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(),"В разработке",Toast.LENGTH_SHORT).show();
+            if(lastBuilding.getName().equals("Несвижский замок")) {
+                openFragment(new Quiz());
+            } else {
+                Toast.makeText(getContext(),"Доступно для Несвижского замка",Toast.LENGTH_SHORT).show();
+            }
         });
         binding.comments.setOnClickListener(v->{
                 openFragment(new CommentsFragment());

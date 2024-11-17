@@ -32,14 +32,16 @@ public class Settings extends Fragment {
         binding = FragmentSettingsBinding.inflate(getLayoutInflater());
         if(userData != null) {
             //binding.ava.setBackground(userData.getDrawable());
-            binding.name.setText(userData.getName());
+            String i = userData.getName();
+            binding.name.setText(i);
             binding.mail.setText(userData.getMail());
 
-            binding.numPlaces.setText(userData.getVisited_places());
-            binding.numQuiz.setText(userData.getQuizzes());
-            binding.numSave.setText(userData.getSave_places());
+            binding.numPlaces.setText("0");
+            binding.numQuiz.setText(String.valueOf(userData.getSave_places()));
+            binding.numSave.setText(String.valueOf(userData.getQuizzes()));
+
         } else {
-            Toast.makeText(getContext(),"dd",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"Ошибка: S003-1",Toast.LENGTH_SHORT).show();
         }
 
         binding.newObject.setOnClickListener(v->{
