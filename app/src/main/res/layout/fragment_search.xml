@@ -238,13 +238,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/facts_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/manrope"
             android:text="место под тест"
             android:textColor="@color/black"
             android:textSize="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/open"
             app:layout_constraintStart_toStartOf="@+id/facts"
             app:layout_constraintTop_toBottomOf="@+id/facts" />
 

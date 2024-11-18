@@ -106,9 +106,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void createBuildingData() {
         Drawable drawable = getDrawable(R.drawable.nesvizh);
-        buildings.add(new BuildingData("Несвижский замок","г.Несвиж",0, getDrawable(R.drawable.nesvizh), "интересная информация", new double[]{53.906894,27.563843,53.22270604710993, 26.692461368346994}));
-        buildings.add(new BuildingData("Площадь победы","г.Минск",0, getDrawable(R.drawable.pl), "интересная информация", new double[]{53.906894,27.563843,53.908760045436935, 27.575098954631187}));
-        buildings.add(new BuildingData("Белая вежа","Беловежская пуща",0, getDrawable(R.drawable.vezsha), "интересная информация", new double[]{53.906894,27.563843,52.40485064444143, 23.819539081786854}));
+        buildings.add(new BuildingData("Несвижский замок","г.Несвиж",0, getDrawable(R.drawable.nesvizh), "Временно недоступно. Идет доработка", new double[]{53.906894,27.563843,53.22270604710993, 26.692461368346994}));
+        buildings.add(new BuildingData("Площадь Победы","г.Минск",0, getDrawable(R.drawable.pl), "Временно недоступно. Идет отладка", new double[]{53.906894,27.563843,53.908760045436935, 27.575098954631187}));
+        buildings.add(new BuildingData("Белая вежа","Беловежская пуща",0, getDrawable(R.drawable.vezsha), "Временно недоступно. Идет тестирование", new double[]{53.906894,27.563843,52.40485064444143, 23.819539081786854}));
     }
 
 }

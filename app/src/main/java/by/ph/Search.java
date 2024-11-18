@@ -67,7 +67,7 @@ public class Search extends Fragment {
 
         binding = FragmentSearchBinding.inflate(getLayoutInflater());
         context = getContext();
-        lastBuilding = buildings.get(0);
+        //lastBuilding = buildings.get(0);
 
         if(name == null) name = "Проблема с целостностью данных";
         if(findFavoriteByName(name) != -1) {
@@ -105,10 +105,19 @@ public class Search extends Fragment {
         binding.comments.setOnClickListener(v->{
                 openFragment(new CommentsFragment());
         });
+        binding.place.setOnClickListener(v -> {
+            if(lastBuilding.getName()==("Площадь Победы")){
+                openFragment(new AR());
+            }
+            else {
+                Toast.makeText(getContext(), "Доступно для Площади Победы",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         binding.name.setText(name);
         binding.city.setText(city);
         binding.place.setImageDrawable(place);
+        binding.factsSearch.setText(lastBuilding.getFunData());
 
         //Поиск
         binding.searchBar.setOnEditorActionListener(new TextView.OnEditorActionListener() {

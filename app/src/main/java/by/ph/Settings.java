@@ -45,9 +45,15 @@ public class Settings extends Fragment {
         }
 
         binding.newObject.setOnClickListener(v->{
-            NewPlaceFragment secondFragment = new NewPlaceFragment();
             FragmentTransaction transaction = requireFragmentManager().beginTransaction();
-            transaction.replace(R.id.frag, secondFragment);
+            transaction.replace(R.id.frag, new NewPlaceFragment());
+            transaction.addToBackStack(null);
+            transaction.commit();
+        });
+
+        binding.refactor.setOnClickListener(v -> {
+            FragmentTransaction transaction = requireFragmentManager().beginTransaction();
+            transaction.replace(R.id.frag, new RegFragment());
             transaction.addToBackStack(null);
             transaction.commit();
         });

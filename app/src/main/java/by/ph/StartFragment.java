@@ -64,7 +64,7 @@ public class StartFragment extends Fragment {
             }
         });
         binding.randomButton.setOnClickListener(v -> {
-            openSearch((int) Math.random() * buildings.size());
+            openSearch((int)(Math.random() * buildings.size()));
         });
         return binding.getRoot();
     }
